@@ -20,7 +20,9 @@ const ColorOptionsSection = () => {
     if (ctaSection) {
       ctaSection.scrollIntoView({ behavior: "smooth" });
       // Set color in FinalCTA via custom event
-      window.dispatchEvent(new CustomEvent("ptashka-select-color", { detail: selectedColor }));
+      window.dispatchEvent(
+        new CustomEvent("ptashka-select-color", { detail: selectedColor }),
+      );
       // Focus name input after scroll
       setTimeout(() => {
         const nameInput = document.getElementById("order-name");
@@ -35,15 +37,23 @@ const ColorOptionsSection = () => {
 
   return (
     <section className="section-padding bg-card">
-      <p className="text-sm tracking-[0.15em] uppercase text-muted-foreground mb-3">Кольори</p>
+      <p className="text-sm tracking-[0.15em] uppercase text-muted-foreground mb-3">
+        Кольори
+      </p>
       <h2 className="text-2xl md:text-3xl font-medium mb-12">
         Чотири нейтральних відтінки
       </h2>
 
-      <div className={`${selectedColor ? "aspect-[3/4] max-w-md mx-auto" : "aspect-[16/9]"} overflow-hidden mb-8 transition-all duration-500`}>
+      <div
+        className={`${selectedColor ? "aspect-[3/4] max-w-md mx-auto" : "aspect-[16/9]"} overflow-hidden mb-8 transition-all duration-500`}
+      >
         <img
           src={currentImg}
-          alt={selectedColor ? `Костюм Ptashka — ${colors.find(c => c.value === selectedColor)?.name}` : "Кольори костюмів Ptashka"}
+          alt={
+            selectedColor
+              ? `Костюм Ptashka — ${colors.find((c) => c.value === selectedColor)?.name}`
+              : "Кольори костюмів Ptashka"
+          }
           className="w-full h-full object-cover transition-opacity duration-300"
           loading="lazy"
         />
@@ -53,7 +63,9 @@ const ColorOptionsSection = () => {
         {colors.map((c) => (
           <button
             key={c.name}
-            onClick={() => setSelectedColor(selectedColor === c.value ? null : c.value)}
+            onClick={() =>
+              setSelectedColor(selectedColor === c.value ? null : c.value)
+            }
             className="flex flex-col items-center gap-2 group"
           >
             <div
@@ -63,9 +75,13 @@ const ColorOptionsSection = () => {
                   : "border-border hover:scale-105"
               }`}
             />
-            <span className={`text-xs transition-colors ${
-              selectedColor === c.value ? "text-foreground font-medium" : "text-muted-foreground"
-            }`}>
+            <span
+              className={`text-xs  ${
+                selectedColor === c.value
+                  ? "text-foreground font-medium"
+                  : "text-muted-foreground"
+              }`}
+            >
               {c.name}
             </span>
           </button>
@@ -76,9 +92,10 @@ const ColorOptionsSection = () => {
         <div className="mt-8 text-center animate-fade-in">
           <button
             onClick={handleOrder}
-            className="bg-foreground text-background px-10 py-4 text-sm tracking-wide uppercase font-medium hover:bg-foreground/90 transition-colors"
+            className="bg-foreground text-background px-10 py-4 text-sm tracking-wide uppercase font-medium hover:bg-foreground/90 "
           >
-            Замовити в кольорі «{colors.find(c => c.value === selectedColor)?.name}»
+            Замовити в кольорі «
+            {colors.find((c) => c.value === selectedColor)?.name}»
           </button>
         </div>
       )}

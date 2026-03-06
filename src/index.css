@@ -75,3 +75,54 @@
     @apply px-5 md:px-10 lg:px-20 py-10 md:py-16;
   }
 }
+
+/* global button animation / shimmer effect */
+@layer base {
+  button {
+    @apply relative overflow-hidden transition-all duration-300;
+    transition: all 0.2s ease-in-out !important;
+  }
+
+  button:hover,
+  button:focus {
+    @apply scale-105 shadow-xl;
+  }
+
+  button:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: skewX(-20deg);
+    z-index: 2;
+    animation: shine 4s infinite;
+    animation-delay: 0.5s;
+  }
+
+  /* sliding shimmer bar always visible at low opacity */
+  button::after {
+    content: "";
+    @apply absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-20 transition-opacity;
+    animation: shimmer 3s ease-in-out infinite;
+  }
+
+  button:hover::after,
+  button:focus::after {
+    @apply opacity-50;
+    animation-duration: 1.5s;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    left: -100%;
+  }
+
+  100% {
+    left: 150%;
+  }
+
+}

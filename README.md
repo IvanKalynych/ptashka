@@ -60,6 +60,13 @@ This project is built with:
 - shadcn-ui
 - Tailwind CSS
 
+## Additional custom features
+
+- **Privacy policy page** (`/privacy`) and a cookie consent banner that appears until the user accepts. Update `src/pages/PrivacyPolicy.tsx` with your real text.
+- **Button animations**: all `<button>` elements have a shimmer and hover-scale effect matching the hero section.
+- **Telegram order integration**: the final order form sends details via Telegram to a bot. Credentials live in `src/lib/telegram.ts` and can be swapped out.
+- **Analytics placeholders**: comments in `index.html` show where to drop your Google Analytics / Ads ID and Facebook Pixel ID. Basic `trackPageView` and `trackPurchase` helpers are in `src/lib/analytics.ts`.
+
 ## How can I deploy this project?
 
 Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.

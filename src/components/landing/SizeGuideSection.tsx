@@ -9,10 +9,10 @@ const sizes = [
 
 const SizeGuideSection = () => (
   <section className="section-padding">
-    <p className="text-sm tracking-[0.15em] uppercase text-muted-foreground mb-3">Розміри</p>
-    <h2 className="text-2xl md:text-3xl font-medium mb-8">
-      Таблиця розмірів
-    </h2>
+    <p className="text-sm tracking-[0.15em] uppercase text-muted-foreground mb-3">
+      Розміри
+    </p>
+    <h2 className="text-2xl md:text-3xl font-medium mb-8">Таблиця розмірів</h2>
 
     <div className="overflow-x-auto">
       <table className="w-full max-w-2xl text-sm">
@@ -39,15 +39,24 @@ const SizeGuideSection = () => (
 
     <p className="text-sm text-muted-foreground mt-6">
       Не впевнені у розмірі? Напишіть нам в{" "}
-      <a href="https://instagram.com/ptashka" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 text-foreground">
+      <a
+        href="https://instagram.com/ptashka_mt"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="underline underline-offset-2 text-foreground"
+      >
         Instagram
       </a>
       , допоможемо підібрати.
     </p>
 
     <button
-      onClick={() => document.getElementById("final-cta")?.scrollIntoView({ behavior: "smooth" })}
-      className="mt-8 bg-foreground text-background px-10 py-4 text-sm tracking-wide uppercase font-medium hover:bg-foreground/90 transition-colors"
+      onClick={() =>
+        document
+          .getElementById("final-cta")
+          ?.scrollIntoView({ behavior: "smooth" })
+      }
+      className="mt-8 bg-foreground text-background px-10 py-4 text-sm tracking-wide uppercase font-medium hover:bg-foreground/90 "
     >
       Замовити зараз
     </button>

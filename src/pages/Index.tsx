@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { trackPageView } from "@/lib/analytics";
 import HeroSection from "@/components/landing/HeroSection";
 import SocialProofSection from "@/components/landing/SocialProofSection";
 import ProblemSection from "@/components/landing/ProblemSection";
@@ -13,6 +15,10 @@ import FinalCTASection from "@/components/landing/FinalCTASection";
 import StickyCart from "@/components/landing/StickyCart";
 
 const Index = () => {
+  useEffect(() => {
+    trackPageView();
+  }, []);
+
   return (
     <main>
       <HeroSection />
