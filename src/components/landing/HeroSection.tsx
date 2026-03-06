@@ -15,7 +15,7 @@ const HeroSection = () => {
           className="w-full h-full object-cover"
           loading="eager"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-foreground/70 via-foreground/20 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-foreground/90 via-foreground/50 to-foreground/10" />
       </div>
 
       <div className="relative z-10 section-padding pb-20 md:pb-24 w-full max-w-3xl">
@@ -39,11 +39,11 @@ const HeroSection = () => {
         <div className="flex items-center gap-6 flex-wrap">
           <button
             onClick={scrollToOrder}
-            className="bg-primary-foreground text-primary px-8 py-4 text-sm tracking-wide uppercase font-medium hover:bg-primary-foreground/90 transition-colors"
+            className="bg-accent text-accent-foreground px-10 py-4 text-sm tracking-wide uppercase font-medium hover:bg-accent/90 transition-colors shadow-lg"
           >
             Купити костюм
           </button>
-          <span className="text-primary-foreground text-2xl font-medium">2 250 ₴</span>
+          <span className="text-primary-foreground text-3xl font-semibold tracking-tight">2 250 ₴</span>
         </div>
       </div>
     </section>
