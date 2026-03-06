@@ -39,9 +39,10 @@ const HeroSection = () => {
         <div className="flex items-center gap-6 flex-wrap">
           <button
             onClick={scrollToOrder}
-            className="bg-accent text-accent-foreground px-10 py-4 text-sm tracking-wide uppercase font-medium hover:bg-accent/90 transition-colors shadow-lg"
+            className="group relative overflow-hidden bg-accent text-accent-foreground px-10 py-4 text-sm tracking-wide uppercase font-medium shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105"
           >
-            Купити костюм
+            <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer" />
+            <span className="relative z-10">Купити костюм</span>
           </button>
           <span className="text-primary-foreground text-3xl font-semibold tracking-tight">2 250 ₴</span>
         </div>
