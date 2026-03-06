@@ -14,8 +14,8 @@ const HeroSection = () => {
           src={heroImg}
           alt="Мінімалістичний костюм Ptashka на моделі"
           className="w-full h-full object-cover"
-          loading="eager"
-        />
+          loading="eager" />
+        
         <div className="absolute inset-0 bg-gradient-to-t from-foreground/95 via-foreground/60 to-foreground/20" />
       </div>
 
@@ -24,9 +24,9 @@ const HeroSection = () => {
         {/* Social proof badge */}
         <div className="inline-flex items-center gap-2 bg-primary-foreground/10 backdrop-blur-sm border border-primary-foreground/15 rounded-full px-4 py-1.5 mb-6">
           <div className="flex -space-x-0.5">
-            {[...Array(5)].map((_, i) => (
-              <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
-            ))}
+            {[...Array(5)].map((_, i) =>
+            <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+            )}
           </div>
           <span className="text-primary-foreground/80 text-xs font-medium">
             1 200+ задоволених клієнтів
@@ -42,31 +42,31 @@ const HeroSection = () => {
         </h1>
 
         {/* Subheadline */}
-        <p className="text-primary-foreground/70 text-base md:text-lg mb-6 max-w-lg leading-relaxed">
-          Ви платите за якість тканини і посадку — не за лого на грудях. 360 GSM тришарова бавовна, яка тримає форму після десятків прань.
-        </p>
+        
+
+        
 
         {/* Bullet benefits — pain-focused */}
         <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2.5 mb-8">
           {[
-            "Не скочується — гарантія на 30 прань",
-            "Не сідає після прання",
-            "Зручний і стоячи, і сидячи",
-            "Без видимих логотипів і зайвого",
-          ].map((item) => (
-            <li key={item} className="flex items-start gap-2 text-primary-foreground/90 text-sm">
+          "Не скочується — гарантія на 30 прань",
+          "Не сідає після прання",
+          "Зручний і стоячи, і сидячи",
+          "Без видимих логотипів і зайвого"].
+          map((item) =>
+          <li key={item} className="flex items-start gap-2 text-primary-foreground/90 text-sm">
               <Check className="w-4 h-4 text-accent-foreground mt-0.5 flex-shrink-0" />
               <span>{item}</span>
             </li>
-          ))}
+          )}
         </ul>
 
         {/* Price + CTA */}
         <div className="flex items-center gap-5 flex-wrap mb-6">
           <button
             onClick={scrollToOrder}
-            className="group relative overflow-hidden bg-accent text-accent-foreground px-10 py-4 text-sm tracking-wide uppercase font-medium shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105"
-          >
+            className="group relative overflow-hidden bg-accent text-accent-foreground px-10 py-4 text-sm tracking-wide uppercase font-medium shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105">
+            
             <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer" />
             <span className="relative z-10">Замовити зараз</span>
           </button>
@@ -92,8 +92,8 @@ const HeroSection = () => {
           </span>
         </div>
       </div>
-    </section>
-  );
+    </section>);
+
 };
 
 export default HeroSection;
