@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const sizes = ["S", "M", "L", "XL", "XXL", "XXXL"];
 const colors = [
@@ -8,9 +8,44 @@ const colors = [
   { name: "Коричневий", value: "brown", tw: "bg-warm-brown" },
 ];
 
+const formatPhone = (value: string) => {
+  const digits = value.replace(/\D/g, "");
+  // Remove leading 380 or 0 prefix for formatting
+  let raw = digits;
+  if (raw.startsWith("380")) raw = raw.slice(3);
+  else if (raw.startsWith("0")) raw = raw.slice(1);
+
+  let formatted = "+38 (0";
+  if (raw.length === 0) return "+38 (0";
+  formatted += raw.slice(0, 2);
+  if (raw.length >= 2) formatted += ") ";
+  if (raw.length > 2) formatted += raw.slice(2, 5);
+  if (raw.length > 5) formatted += "-" + raw.slice(5, 7);
+  if (raw.length > 7) formatted += "-" + raw.slice(7, 9);
+  return formatted;
+};
+
 const FinalCTASection = () => {
   const [selectedSize, setSelectedSize] = useState("M");
   const [selectedColor, setSelectedColor] = useState("black");
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("+38 (0");
+  const [comment, setComment] = useState("");
+  const nameInputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    const handler = (e: Event) => {
+      const color = (e as CustomEvent).detail;
+      if (color) setSelectedColor(color);
+    };
+    window.addEventListener("ptashka-select-color", handler);
+    return () => window.removeEventListener("ptashka-select-color", handler);
+  }, []);
+
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const formatted = formatPhone(e.target.value);
+    if (formatted.length <= 19) setPhone(formatted);
+  };
 
   return (
     <section id="final-cta" className="section-padding bg-charcoal text-center">
@@ -50,6 +85,43 @@ const FinalCTASection = () => {
               </button>
             ))}
           </div>
+        </div>
+
+        <div>
+          <label htmlFor="order-name" className="text-sm text-primary-foreground/70 mb-2 block">Ім'я</label>
+          <input
+            id="order-name"
+            ref={nameInputRef}
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Ваше ім'я"
+            className="w-full bg-transparent border border-primary-foreground/30 text-primary-foreground px-4 py-3 text-sm placeholder:text-primary-foreground/30 focus:outline-none focus:border-primary-foreground/70 transition-colors"
+          />
+        </div>
+
+        <div>
+          <label htmlFor="order-phone" className="text-sm text-primary-foreground/70 mb-2 block">Телефон</label>
+          <input
+            id="order-phone"
+            type="tel"
+            value={phone}
+            onChange={handlePhoneChange}
+            placeholder="+38 (0XX) XXX-XX-XX"
+            className="w-full bg-transparent border border-primary-foreground/30 text-primary-foreground px-4 py-3 text-sm placeholder:text-primary-foreground/30 focus:outline-none focus:border-primary-foreground/70 transition-colors"
+          />
+        </div>
+
+        <div>
+          <label htmlFor="order-comment" className="text-sm text-primary-foreground/70 mb-2 block">Коментар</label>
+          <textarea
+            id="order-comment"
+            value={comment}
+            onChange={(e) => setComment(e.target.value)}
+            placeholder="Додаткові побажання (необов'язково)"
+            rows={3}
+            className="w-full bg-transparent border border-primary-foreground/30 text-primary-foreground px-4 py-3 text-sm placeholder:text-primary-foreground/30 focus:outline-none focus:border-primary-foreground/70 transition-colors resize-none"
+          />
         </div>
 
         <div className="pt-4">
