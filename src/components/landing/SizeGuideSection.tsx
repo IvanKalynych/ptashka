@@ -44,6 +44,13 @@ const SizeGuideSection = () => (
       </a>
       , допоможемо підібрати.
     </p>
+
+    <button
+      onClick={() => document.getElementById("final-cta")?.scrollIntoView({ behavior: "smooth" })}
+      className="mt-8 bg-foreground text-background px-10 py-4 text-sm tracking-wide uppercase font-medium hover:bg-foreground/90 transition-colors"
+    >
+      Замовити зараз
+    </button>
   </section>
 );
 
