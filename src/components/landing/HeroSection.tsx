@@ -78,7 +78,7 @@ const HeroSection = () => {
 
         {/* Trust indicators */}
         <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-primary-foreground/50 text-xs">
-          <span className="inline-flex items-center gap-1.5">Доставка Новою Поштою
+          <span className="inline-flex items-center gap-1.5"> Доставка Новою Поштою
             <Truck className="w-3.5 h-3.5" />
             Доставка Новою Поштою 1–3 дні
           </span>
